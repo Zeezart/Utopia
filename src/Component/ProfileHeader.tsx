@@ -1,27 +1,19 @@
 import  { useState } from 'react'
-import Navbar from '../Component/Navbar'
 import { profilePicture } from '../assets/index'
 import { useAuth } from '../ContextApi/UserAuthContext'
-import EditProfile from '../Modals/EditProfile'
 import usePreviewImage from '../Hooks/usePreviewImage'
-import ProfileHeader from '../Component/ProfileHeader'
 
-function Profile() {
+type TProfileHeader = {
+    displayEditModal: any
+}
 
-  const {userData} = useAuth()
-  const [editModal, setEditModal] = useState(false)
-  const {selectedImage} = usePreviewImage()
+function ProfileHeader({displayEditModal}:TProfileHeader) {
+    const {userData} = useAuth()
+    const {selectedImage} = usePreviewImage()
 
-  function displayEditModal(){
-    setEditModal(true)
-  }
   
-
   return (
-    <div id="profile-page">
-      <Navbar />
-      <div className="profile">
-        {/* <div className="profile-details">
+    <div className="profile-details">
             <div className="profile-picture">
               <img src={selectedImage || profilePicture} alt="" />
             </div>
@@ -54,35 +46,8 @@ function Profile() {
               </div>
             </div>
             
-        </div> */}
-
-        <ProfileHeader displayEditModal={displayEditModal} />
-
-        <div className="posts-section">
-          <div className="post-identifier">
-            <p>Posts</p>
-            <p>Saved</p>
-          </div>
-
-          <div className="posts">
-            <div className='post'>
-              <img src={profilePicture}/>
-            </div>
-            <div className='post'>
-              <img src={profilePicture}/>
-            </div>
-            <div className='post'>
-              <img src={profilePicture}/>
-            </div>
-            
-            
-          </div>
         </div>
-
-      {editModal && <EditProfile username={userData.username} bio={userData.bio} setEditModal={setEditModal}/>}
-      </div>
-    </div>
   )
 }
 
-export default Profile
+export default ProfileHeader
