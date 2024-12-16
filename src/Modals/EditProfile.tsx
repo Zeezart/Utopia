@@ -20,11 +20,7 @@ function EditProfile({username,bio,setEditModal}:TEditProfileProps) {
     })
 
     
-
-
     const { editProfile} = useEditProfile()
-
-    
 
     function handleChange(e:React.ChangeEvent<HTMLInputElement>){
         const {name, value} = e.target 
@@ -42,7 +38,6 @@ function EditProfile({username,bio,setEditModal}:TEditProfileProps) {
             alert(err.message)
         }
         setEditModal(false)
-        console.log(profileDetails)
     }
 
     

@@ -20,7 +20,7 @@ function HomePage(){
                 <div>
                   <img src={profilePicture}/>
                 </div>
-                <p>{currentUser?.displayName}</p>
+                <p>{userData?.username}</p>
               </div>
               <i>icon</i>
             </div>

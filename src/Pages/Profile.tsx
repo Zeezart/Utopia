@@ -15,9 +15,6 @@ function Profile() {
     setEditModal(true)
   }
   
-  console.log(userData)
-
-  
 
   return (
     <div id="profile-page">
