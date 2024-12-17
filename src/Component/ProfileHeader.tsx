@@ -1,4 +1,3 @@
-import  { useState } from 'react'
 import { profilePicture } from '../assets/index'
 import { useAuth } from '../ContextApi/UserAuthContext'
 import usePreviewImage from '../Hooks/usePreviewImage'
