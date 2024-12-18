@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useAuth } from '../ContextApi/UserAuthContext'
 import { useGetUser } from '../ContextApi/GetUserProfileContext'
 import { arrayRemove, arrayUnion, doc, updateDoc } from 'firebase/firestore'
@@ -11,6 +11,7 @@ function useFollowUser(userID:any) {
     const {userProfile, setUserProfile} = useGetUser()
     const {userData,setUserData,currentUser} = useAuth()
 
+    console.log(userID)
     async function handleFollowerUser(){
         setIsUpdating(true)
         if(currentUser)
@@ -37,11 +38,33 @@ function useFollowUser(userID:any) {
                     ...userProfile,
                     followers: userProfile.followers.filter((uid:string) => uid !== currentUser.uid)
                 })
+                localStorage.setItem("user-info", JSON.stringify({
+                    ...userData,
+                    following: userData.following.filter((uid:string) => uid !== userID)
+                }))
+                setIsFollowing(false)
             }else{
                 //we want to follow
+                setUserData({
+                    ...userData,
+                    following: [...userData.following, userID]
+                })
+
+                setUserProfile({
+                    ...userProfile,
+                    followers:[...userProfile.follower, currentUser.uid]
+                })
+
+                localStorage.setItem("user-info", JSON.stringify({
+                    ...userData,
+                    following: [...userData.following, userID]
+                }))
+
+                setIsFollowing(true)
             }
         }catch(err:any){
             alert(err.message)
+            console.log(err)
         }
 
     }
