@@ -54,6 +54,7 @@ function SignUp() {
     
                     const userDoc = await setDoc(doc(db,"users",user.uid),{
                         email: user.email,
+                        uid: user.uid,
                         username: userDetails.username,
                         bio: "",
                         profilePictureUrl: user.photoURL,

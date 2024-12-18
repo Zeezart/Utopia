@@ -5,9 +5,7 @@ import {profilePicture} from "../assets/index"
 
 function HomePage(){
 
-  const {currentUser, userData}= useAuth()
-  console.log(userData)
-  console.log(currentUser)
+  const { userData}= useAuth()
       
   return (
     <div id="home-page">

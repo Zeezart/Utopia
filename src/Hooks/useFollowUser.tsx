@@ -11,7 +11,6 @@ function useFollowUser(userID:any) {
     const {userProfile, setUserProfile} = useGetUser()
     const {userData,setUserData,currentUser} = useAuth()
 
-    console.log(userID)
     async function handleFollowerUser(){
         setIsUpdating(true)
         if(currentUser)

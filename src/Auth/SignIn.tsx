@@ -66,6 +66,7 @@ function SignIn() {
                 const userDoc = await setDoc(doc(db,"users",user.uid),{
                     email: user.email,
                     username: user.displayName.split(" ")[0],
+                    uid: user.uid,
                     bio: "",
                     profilePictureUrl: user.photoURL,
                     followers: [],
