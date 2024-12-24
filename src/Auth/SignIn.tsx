@@ -4,7 +4,6 @@ import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../ContextApi/UserAuthContext"
 import { doc, getDoc,setDoc } from "firebase/firestore"; 
 import { db } from "../Auth/Firebase"
-import {useGetUser} from "../ContextApi/GetUserProfileContext"
 
 
 type TUserDetails = {

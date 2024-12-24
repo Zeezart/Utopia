@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import {useAuth} from "../ContextApi/UserAuthContext"
 import Navbar from '../Component/Navbar'
 import {profilePicture} from "../assets/index"
+import ExtraTab from '../Component/ExtraTab'
 
 function HomePage(){
 
@@ -40,9 +41,7 @@ function HomePage(){
           </div>
         </div>
 
-        <div className="extra">
-          <h1>Extra</h1>
-        </div>
+        <ExtraTab />
     </div>
   )
 }

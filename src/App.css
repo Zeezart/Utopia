@@ -83,6 +83,63 @@ body{
   }
 }
 
+/* EXTRA TAB STYLING */
+.extra{
+  border-left: 1px solid var(--secondary-btn-bg);
+  padding: 2rem;
+  width: 30%;
+  .search-tab{
+    width: 100%;
+    box-sizing: border-box;
+    input{
+      padding: 1rem;
+      border: none;
+      background: var(--secondary-btn-bg);
+      border-radius: 5px;
+      font: inherit;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
+  .suggested-users{
+    margin-top: 2rem;
+    h2{
+      font-size:1rem;
+      color: var(--primary-blue);
+      font-weight:300;
+    }
+    .sugg-user{
+      margin-top: 1rem;
+      padding-bottom: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--secondary-btn-bg);
+      .suggested-user-details{
+        h3{
+          font-size:0.9rem;
+          margin: 0;
+          padding: 0;
+        }
+        p{
+          font-size: 0.7rem;
+          color: var(--light-text-scd)
+        }
+      }
+      button{
+        padding: 0.7rem 1rem;
+        background-color: var(--primary-blue);
+        border: none;
+        border-radius: 5px;
+        font: inherit;
+        color: #fff;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
 /* AUTHENTICATION PAGE STYLING */
 #auth-page{
   .container{
@@ -240,17 +297,16 @@ body{
       }
     }
   }
-  .extra{
-    background-color: blue;
-    width: 30%;
-  }
+  
 }
 
 /* PROFILE PAGE STYLING */
 #profile-page{
+  display: flex;
   .profile{
     margin-left: 15%;
     padding: 2rem 4rem;
+    width: 50%;
     .profile-details{
       display: flex;
       gap:4rem;
@@ -330,9 +386,8 @@ body{
         }
       }
       .posts{
-        display: flex;
-        gap: 1rem;
         width: 100%;
+        margin-top: 1.3rem;
         .post{
           width: 33.33%;
           height: 33.33%;
@@ -342,6 +397,41 @@ body{
             height: 100%;
           }
         }
+      }
+    }
+  }
+}
+
+/* EACH POST STYLING */
+#each-post{
+  width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--light-text-scd);
+  margin-top: 0.5rem;
+  .post-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .post-detail{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      h3{
+        font-size: 1rem;
+        color: var(--light-text-primary);
+        margin: 0;
+        padding: 0;
+      }
+      p{
+        font-size: 0.87rem;
+        color: var(--light-text-scd);
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .post-message{
+      p{
+        font-size: 0.9rem;
       }
     }
   }
@@ -426,6 +516,48 @@ body{
       color: var(--dark-text-primary);
       border-radius: 5px;
       border: none;
+    }
+  }
+}
+
+/* CREATE PAGE STYLING */
+#create-page{
+  display: flex;
+  height: 100vh;
+  .create{
+    padding: 2rem 4rem;
+    margin-left: 15%;
+    width: 50%;
+    .create-header{
+      h2{
+        margin: 0;
+      }
+      p{
+        margin: 0;    
+      }
+    }
+    .create-content{
+      margin: 1rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      justify-content: space-between;
+      height: 100%;
+      textarea{
+        outline: none;
+        font: inherit;
+        background: transparent;
+        border: none;
+        /* height: 100%; */
+      }
+      button{
+        background-color: var(--primary-blue);
+        padding: 0.8rem 1rem;
+        font: inherit;
+        color: var(--dark-text-primary);
+        border-radius: 5px;
+        border: none;
+      }
     }
   }
 }

@@ -5,11 +5,16 @@ import EditProfile from "../Modals/EditProfile";
 import ProfileHeader from "../Component/ProfileHeader";
 import useGetUserProfile from "../Hooks/useGetUserProfile";
 import { profilePicture } from '../assets/index'
+import ExtraTab from "../Component/ExtraTab";
+import EachPost from "../Component/EachPost";
+import { useGetPost } from "../ContextApi/PostContext";
+import ProfilePosts from "../Component/ProfilePosts";
 
 const Profile = () => {
   const { username } = useParams<{ username: string }>();
   const [editModal, setEditModal] = useState(false);
   const { isLoading, userProfile } = useGetUserProfile(username);
+  // const { posts } = useGetPost()
 
   const displayEditModal = () => {
     setEditModal(true);
@@ -29,16 +34,12 @@ const Profile = () => {
             <p>Saved</p>
           </div>
           <div className="posts">
-             <div className='post'>
-               <img src={profilePicture}/>
-             </div>
-             <div className='post'>
-               <img src={profilePicture}/>
-             </div>
+             <ProfilePosts />
           </div>
         </div>
       </div>
       {editModal && <EditProfile username={userProfile.username} bio={userProfile.bio} setEditModal={setEditModal} />}
+      <ExtraTab />
     </div>
   );
 };
