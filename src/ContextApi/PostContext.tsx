@@ -5,6 +5,7 @@ type TPostContext = {
   posts: TPost[];
   setPosts: any;
   createPost: any;
+  deletePost: any;
 };
 
 type TPost = {
@@ -31,9 +32,13 @@ export const PostContextProvider: React.FC<{
     setPosts((prevPosts) => [...prevPosts, newPost])
   }
 
+  function deletePost(postId:any){
+    setPosts((prevPosts) => prevPosts.filter((post) => post.id !== postId))
+  }
+
   return (
     <PostContext.Provider
-      value={{posts,setPosts,createPost}}
+      value={{posts,setPosts,createPost, deletePost}}
     >
       {children}
     </PostContext.Provider>

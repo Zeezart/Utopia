@@ -1,8 +1,8 @@
 import { useState, useRef } from "react"
-import { doc, updateDoc } from "firebase/firestore"
+import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore"
 import { useAuth } from "../ContextApi/UserAuthContext"
 import { db } from "../Auth/Firebase"
-
+import { useGetPost } from "../ContextApi/PostContext"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH} from '@fortawesome/free-solid-svg-icons';
 import { faHeart, faComment, faBookmark } from '@fortawesome/free-regular-svg-icons';
@@ -52,6 +52,28 @@ function EachPost({post}:any) {
     function handleDisplayComments(){
         setDisplayComments(true)
     }
+
+
+    //DELETE POST
+    const [isDeleting, setIsDeleting] = useState(false)
+    const {deletePost} = useGetPost()
+    async function handleDeletePost(postId:any){
+        if(!window.confirm("Are you sure you want to delete this post?")) return
+        if(isDeleting) return
+        try{
+            const userRef = doc(db,"users",userData.uid)
+            await deleteDoc(doc(db,"posts",post.id))
+            await updateDoc(userRef,{
+                posts: arrayRemove(post.id)
+            })
+
+            deletePost(postId)
+        }catch(err:any){
+            alert(err.message)
+        }finally{
+            setIsDeleting(false)
+        }
+    }
   return (
     <div id="each-post">
         <div className="post-header">
@@ -62,9 +84,9 @@ function EachPost({post}:any) {
 
            {userData.uid === userProfile.uid && <FontAwesomeIcon  icon={faEllipsisH} onClick={handleMoreDropdown}/>}
 
-            {displayMoreDropdown && 
+            {displayMoreDropdown && !isDeleting &&
                 <div className="more-dropdown-menu">
-                    <p>Delete</p>
+                    <p onClick={handleDeletePost}>Delete</p>
                     <p>Edit</p>
                 </div>
             }
