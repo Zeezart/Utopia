@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "../ContextApi/UserAuthContext";
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-//import { faCoffee, faHome } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faHome } from '@fortawesome/free-solid-svg-icons';
 //import { useAuthState } from 'react-firebase-hooks/auth';
  
 
@@ -41,8 +41,6 @@ function Navbar() {
     <div className="navbar">
         <h1 className='logo'>Utopia</h1>
         <nav>
-          
-          {/* <FontAwesomeIcon icon={faHome} size="2x" /> */}
             <NavItem to="/home" label="Home" />
             <NavItem to="/search" label="Search" />
             <NavItem to="/notification" label="Notification" />

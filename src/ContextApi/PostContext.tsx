@@ -27,8 +27,8 @@ export const PostContextProvider: React.FC<{
   
   const [posts,setPosts] = useState<TPost[]>([])
 
-  function createPost(){
-
+  function createPost(newPost:any){
+    setPosts((prevPosts) => [...prevPosts, newPost])
   }
 
   return (

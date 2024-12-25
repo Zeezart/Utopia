@@ -1,6 +1,57 @@
+import { useState, useRef } from "react"
+import { doc, updateDoc } from "firebase/firestore"
+import { useAuth } from "../ContextApi/UserAuthContext"
+import { db } from "../Auth/Firebase"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEllipsisH} from '@fortawesome/free-solid-svg-icons';
+import { faHeart, faComment, faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { useGetUser } from "../ContextApi/GetUserProfileContext";
+import Comments from "../Modals/Comments";
+
 function EachPost({post}:any) {
     
+    const {userData} = useAuth()
+    const {userProfile} = useGetUser()
 
+    const [isLiked, setIsLiked] = useState<boolean>(false)
+    const [likeCount, setLikeCount] = useState<number>(post.likes.length)
+
+    const likePost = async () => {
+        setIsLiked(!isLiked)
+        if(isLiked){
+            setLikeCount(likeCount + 1)
+        }else{
+            setLikeCount(likeCount - 1)
+        }
+        //const userDocRef = doc(db,"users",userData.uid)
+
+      //await updateDoc(userDocRef, {posts:arrayUnion(postDocRef.id)})
+    }
+
+    //MORE OPTIONS DROPDOWN FUNCTIONALITY
+    const [position, setPosition] = useState({ top: 0, left: 0 });
+    const buttonRef = useRef<HTMLButtonElement>(null);
+
+    const [displayMoreDropdown, setDisplayMoreDropdown] = useState(false)
+    function handleMoreDropdown(){
+        // if (buttonRef.current) {
+        //     const rect = buttonRef.current.getBoundingClientRect();
+        //     setPosition({
+        //       top: rect.bottom, // Position below the button
+        //       left: rect.left,  // Align to the left of the button
+        //     });
+        // }
+        setDisplayMoreDropdown(!displayMoreDropdown)
+    }
+
+
+
+    //DISPLAY COMMENT FUNCTIONALITY
+    const [displayComments, setDisplayComments] = useState(false)
+    function handleDisplayComments(){
+        setDisplayComments(true)
+    }
   return (
     <div id="each-post">
         <div className="post-header">
@@ -9,7 +60,14 @@ function EachPost({post}:any) {
                 <p>{post.createdAt}</p>
             </div>
 
-            <i>More</i>
+           {userData.uid === userProfile.uid && <FontAwesomeIcon  icon={faEllipsisH} onClick={handleMoreDropdown}/>}
+
+            {displayMoreDropdown && 
+                <div className="more-dropdown-menu">
+                    <p>Delete</p>
+                    <p>Edit</p>
+                </div>
+            }
         </div>
 
         <div className="post-message">
@@ -17,10 +75,23 @@ function EachPost({post}:any) {
         </div>
 
         <div className="post-interaction">
-            <i>love</i>
-            <i>comment</i>
-            <i>save</i>
+            <div onClick={likePost} className="each-post-interaction-icon">
+                <FontAwesomeIcon icon={faHeart} />
+                <p>{post.likes.length}</p>
+            </div>
+
+            <div onClick={likePost} className="each-post-interaction-icon">
+                <FontAwesomeIcon icon={faComment} onClick={handleDisplayComments}/>
+                <p>{post.comments.length}</p>
+            </div>
+
+            <div onClick={likePost} className="each-post-interaction-icon">
+                <FontAwesomeIcon icon={faBookmark} />   
+            </div>
+            
         </div>
+
+        {displayComments && <Comments postDetails={post} setDisplayComments={setDisplayComments}/>}
     </div>
   )
 }

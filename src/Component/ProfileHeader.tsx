@@ -36,7 +36,7 @@ const ProfileHeader = ({ displayEditModal }: TProfileHeader) => {
         </div>
         <div className="figures">
           <div className="post-count figure">
-            <h2>{userProfile.posts.length}</h2>
+            <h2>{userProfile.posts?.length}</h2>
             <p>Posts</p>
           </div>
           <div className="follower-count figure">

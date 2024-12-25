@@ -74,7 +74,9 @@ function useCreatePost(){
       const userDocRef = doc(db,"users",userData.uid)
 
       await updateDoc(userDocRef, {posts:arrayUnion(postDocRef.id)})
-      createPost({...newPost, id:postDocRef.id})
+      //createPost({...newPost, id:postDocRef.id})
+      createPost(newPost)
+
       addPost({...newPost,id:postDocRef.id})
       alert("post created successfully")
     }catch(error: any){

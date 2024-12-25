@@ -71,6 +71,7 @@ function SignIn() {
                     followers: [],
                     following:[],
                     postCounts:[],
+                    posts: [],
                     createdAt: Date.now(),
                 })
                 localStorage.setItem("user-info", JSON.stringify(userDoc))
