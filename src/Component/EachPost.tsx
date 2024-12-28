@@ -68,6 +68,7 @@ function EachPost({post}:any) {
             })
 
             deletePost(postId)
+            setDisplayMoreDropdown(false)
         }catch(err:any){
             alert(err.message)
         }finally{

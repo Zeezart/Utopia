@@ -1,9 +1,17 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
-
+import useCreateComment from '../Hooks/useCreateComment';
+import { useState } from 'react';
 
 function Comments({postDetails, setDisplayComments}:any) {
-  return (
+    const {isCommenting, handlePostComment} = useCreateComment()
+    const [inputedComment, setInputedComment] = useState("")
+    
+    const handleSubmitComment = async() => {
+        await handlePostComment(postDetails.id, inputedComment)
+        setInputedComment("")
+    }
+    return (
     <div id="comments-section">
         <div className='comments-header'>
             <p>Comments</p>
@@ -14,15 +22,22 @@ function Comments({postDetails, setDisplayComments}:any) {
             <p>{postDetails.postContent}</p>
         </div>
         <div className="all-comments">
-            <div className='individual-comment'>
-                <h5>user12345</h5>
-                <p>Valid reasoning</p>
-                <p className='time-commented'>23/4/2024</p>
-            </div>
+            {postDetails.comments.map((comment:any,index:number) => (
+                <div className='individual-comment' key={index}>
+                    <h5>{comment.createdBy}</h5>
+                    <p>{comment.commentContent}</p>
+                    <p className='time-commented'>{comment.createdAt}</p>
+                </div>
+            ))}
         </div>
         <div className="enter-comment">
-            <input type="text" placeholder="Drop your opinion..."/>
-            <button>Send</button>
+            <input 
+                type="text" 
+                placeholder="Drop your opinion..."
+                onChange={(e)=>setInputedComment(e.target.value)}
+                value={inputedComment}
+            />
+            <button onClick={handleSubmitComment}>Send</button>
         </div>
     </div>
   )

@@ -25,6 +25,7 @@ body{
 .logo{
   background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
   width: fit-content;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Pacifico", cursive;
@@ -528,6 +529,7 @@ body{
     flex-direction: row;
     gap: 2rem;
     padding: 0 2rem;
+    box-sizing: border-box;
     input{
       outline: none;
       border: none;
@@ -537,6 +539,7 @@ body{
       padding: 1rem 0;
       margin: 1rem 0;
       width: 100%;
+      box-sizing: border-box;
     }
 
     button{
