@@ -5,29 +5,21 @@ import { db } from "../Auth/Firebase"
 import { useGetPost } from "../ContextApi/PostContext"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH} from '@fortawesome/free-solid-svg-icons';
-import { faHeart, faComment, faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faRegularHeart, faComment, faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faSolidHeart } from "@fortawesome/free-solid-svg-icons"
 import { useGetUser } from "../ContextApi/GetUserProfileContext";
 import Comments from "../Modals/Comments";
+import { timeAgo } from "../Utils/Timestamp"
+import useLikePost from "../Hooks/useLikePost"
 
 function EachPost({post}:any) {
     
     const {userData} = useAuth()
     const {userProfile} = useGetUser()
 
-    const [isLiked, setIsLiked] = useState<boolean>(false)
-    const [likeCount, setLikeCount] = useState<number>(post.likes.length)
+    //HANDLE LIKE POST FUNCTIONALITY
+    const {handleLikePost,likes,isLiked,isLiking} = useLikePost(post)
 
-    const likePost = async () => {
-        setIsLiked(!isLiked)
-        if(isLiked){
-            setLikeCount(likeCount + 1)
-        }else{
-            setLikeCount(likeCount - 1)
-        }
-        //const userDocRef = doc(db,"users",userData.uid)
-
-      //await updateDoc(userDocRef, {posts:arrayUnion(postDocRef.id)})
-    }
 
     //MORE OPTIONS DROPDOWN FUNCTIONALITY
     const [position, setPosition] = useState({ top: 0, left: 0 });
@@ -80,7 +72,7 @@ function EachPost({post}:any) {
         <div className="post-header">
             <div className="post-detail">
                 <h3>{post.user}</h3>
-                <p>{post.createdAt}</p>
+                <p>{timeAgo(post.createdAt)}</p>
             </div>
 
            {userData.uid === userProfile.uid && <FontAwesomeIcon  icon={faEllipsisH} onClick={handleMoreDropdown}/>}
@@ -98,17 +90,17 @@ function EachPost({post}:any) {
         </div>
 
         <div className="post-interaction">
-            <div onClick={likePost} className="each-post-interaction-icon">
-                <FontAwesomeIcon icon={faHeart} />
-                <p>{post.likes.length}</p>
+            <div onClick={handleLikePost} className="each-post-interaction-icon">
+                <FontAwesomeIcon icon={isLiked ? faSolidHeart : faRegularHeart} style={{ color: isLiked ? "#5285cc" : "#000" }}/>
+                <p>{likes}</p>
             </div>
 
-            <div onClick={likePost} className="each-post-interaction-icon">
-                <FontAwesomeIcon icon={faComment} onClick={handleDisplayComments}/>
+            <div onClick={handleDisplayComments} className="each-post-interaction-icon">
+                <FontAwesomeIcon icon={faComment} />
                 <p>{post.comments.length}</p>
             </div>
 
-            <div onClick={likePost} className="each-post-interaction-icon">
+            <div  className="each-post-interaction-icon">
                 <FontAwesomeIcon icon={faBookmark} />   
             </div>
             

@@ -2,11 +2,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import useCreateComment from '../Hooks/useCreateComment';
 import { useState } from 'react';
+import { useAuth } from '../ContextApi/UserAuthContext';
+import { timeAgo } from '../Utils/Timestamp';
+
 
 function Comments({postDetails, setDisplayComments}:any) {
     const {isCommenting, handlePostComment} = useCreateComment()
     const [inputedComment, setInputedComment] = useState("")
-    
+    const {currentUser} = useAuth()
+
     const handleSubmitComment = async() => {
         await handlePostComment(postDetails.id, inputedComment)
         setInputedComment("")
@@ -26,19 +30,19 @@ function Comments({postDetails, setDisplayComments}:any) {
                 <div className='individual-comment' key={index}>
                     <h5>{comment.createdBy}</h5>
                     <p>{comment.commentContent}</p>
-                    <p className='time-commented'>{comment.createdAt}</p>
+                    <p className='time-commented'>{timeAgo(comment.createdAt)}</p>
                 </div>
             ))}
         </div>
-        <div className="enter-comment">
+        {currentUser && <div className="enter-comment">
             <input 
                 type="text" 
                 placeholder="Drop your opinion..."
                 onChange={(e)=>setInputedComment(e.target.value)}
                 value={inputedComment}
             />
-            <button onClick={handleSubmitComment}>Send</button>
-        </div>
+            <button onClick={handleSubmitComment} >Send</button>
+        </div>}
     </div>
   )
 }
