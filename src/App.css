@@ -751,6 +751,16 @@ body{
     }
   }
 
+  #auth-page{
+    .container{
+      img{
+        display: none;
+      }
+      .form-container{
+        padding: 1rem 2rem;
+      }
+    }
+  }
   #home-page{
     display: block;
     width: 100%;
