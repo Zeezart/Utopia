@@ -2,13 +2,14 @@ import { profilePicture } from "../assets/index";
 import { useAuth } from "../ContextApi/UserAuthContext";
 import { useGetUser } from "../ContextApi/GetUserProfileContext";
 import useFollowUser from '../Hooks/useFollowUser'
+import { useNavigate } from "react-router-dom"
 
 type TProfileHeader = {
   displayEditModal: () => void;
 };
 
 const ProfileHeader = ({ displayEditModal }: TProfileHeader) => {
-  const { userData, currentUser } = useAuth();
+  const { userData, currentUser, SignOut } = useAuth();
   const { userProfile } = useGetUser();
 
   const myProfilePageAuth =
@@ -23,11 +24,18 @@ const ProfileHeader = ({ displayEditModal }: TProfileHeader) => {
     return <p>User profile not found.</p>; 
   }
 
+  const navigate = useNavigate()
+
+  function Signout(){
+    SignOut()
+    navigate("/signin")
+  }
+
   return (
     <div className="profile-details">
-      <div className="profile-picture">
+      {/* <div className="profile-picture">
         <img src={profilePicture} alt="Profile" />
-      </div>
+      </div> */}
 
       <div className="profile-info">
         <div className="profile-name">
@@ -52,13 +60,13 @@ const ProfileHeader = ({ displayEditModal }: TProfileHeader) => {
         {myProfilePageAuth ? (
           <div className="edit-button">
             <button onClick={displayEditModal}>Edit Profile</button>
-            <button>View Activity</button>
+            <button onClick={Signout} className="logout">Log Out</button>
           </div>
         ) : (
           othersProfilePageAuth && (
             <div className="edit-button">
               <button onClick={handleFollowerUser}>{isFollowing?"Unfollow":"Follow"}</button>
-              <button>View Activity</button>
+              
             </div>
           )
         )}

@@ -9,6 +9,7 @@ import ExtraTab from "../Component/ExtraTab";
 import EachPost from "../Component/EachPost";
 import { useGetPost } from "../ContextApi/PostContext";
 import ProfilePosts from "../Component/ProfilePosts";
+import MobileNavbar from "../Component/MobileNavbar";
 
 const Profile = () => {
   const { username } = useParams<{ username: string }>();
@@ -26,6 +27,7 @@ const Profile = () => {
   return (
     <div id="profile-page">
       <Navbar />
+      
       <div className="profile">
         <ProfileHeader displayEditModal={displayEditModal} />
         <div className="posts-section">
@@ -40,6 +42,7 @@ const Profile = () => {
       </div>
       {editModal && <EditProfile username={userProfile.username} bio={userProfile.bio} setEditModal={setEditModal} />}
       <ExtraTab />
+      <MobileNavbar />
     </div>
   );
 };

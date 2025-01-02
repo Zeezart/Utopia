@@ -1,9 +1,9 @@
-import React from 'react'
 import Navbar from '../Component/Navbar'
+import MobileNavbar from '../Component/MobileNavbar'
 
 function Notification() {
   return (
-    <div><Navbar /></div>
+    <div><Navbar /><MobileNavbar /></div>
   )
 }
 

@@ -7,6 +7,7 @@ import {useGetPost} from "../ContextApi/PostContext"
 import { useLocation } from 'react-router-dom'
 import { addDoc, arrayUnion, collection, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../Auth/Firebase'
+import MobileNavbar from '../Component/MobileNavbar'
 
 function Create() {
 
@@ -26,6 +27,7 @@ function Create() {
   return (
     <div  id="create-page">
       <Navbar />
+      
       <div className='create'>
         <div className="create-header">
           <h2>Create</h2>
@@ -43,6 +45,7 @@ function Create() {
         </div>
       </div>
       <ExtraTab />
+      <MobileNavbar />
     </div>
   )
 }

@@ -71,8 +71,8 @@ function EachPost({post}:any) {
     <div id="each-post">
         <div className="post-header">
             <div className="post-detail">
-                <h3>{post.user}</h3>
-                <p>{timeAgo(post.createdAt)}</p>
+                <h3>{post?.user}</h3>
+                <p>{timeAgo(post?.createdAt)}</p>
             </div>
 
            {userData.uid === userProfile.uid && <FontAwesomeIcon  icon={faEllipsisH} onClick={handleMoreDropdown}/>}
@@ -86,7 +86,7 @@ function EachPost({post}:any) {
         </div>
 
         <div className="post-message">
-            <p>{post.postContent}</p>
+            <p>{post?.postContent}</p>
         </div>
 
         <div className="post-interaction">
@@ -97,7 +97,7 @@ function EachPost({post}:any) {
 
             <div onClick={handleDisplayComments} className="each-post-interaction-icon">
                 <FontAwesomeIcon icon={faComment} />
-                <p>{post.comments.length}</p>
+                <p>{post?.comments?.length}</p>
             </div>
 
             <div  className="each-post-interaction-icon">

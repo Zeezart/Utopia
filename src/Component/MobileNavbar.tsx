@@ -2,14 +2,14 @@ import { FC } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "../ContextApi/UserAuthContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faHome } from '@fortawesome/free-solid-svg-icons';
+import {  faHeart, faHome, faPerson, faPlus, faSearch, faSignOut } from '@fortawesome/free-solid-svg-icons';
 //import { useAuthState } from 'react-firebase-hooks/auth';
  
 
 
 type TNavbarProps ={
-    label: string;
-    to:string;
+    label: any;
+    to?: any;
     onClick?:any;
 }
 
@@ -26,7 +26,7 @@ const NavItem: FC<TNavbarProps>=({label,to}) => {
     </NavLink>
   );
 }
-function Navbar() {
+function MobileNavbar() {
     const navigate = useNavigate()
     const {SignOut, userData} = useAuth()
     //const { pathname } = useLocation()
@@ -38,17 +38,15 @@ function Navbar() {
       navigate("/signin")
     }
   return (
-    <div className="navbar">
-        <h1 className='logo'>Utopia</h1>
+    <div className="mobile-navbar">
         <nav>
-            <NavItem to="/home" label="Home" />
-            {/* <NavItem to="#" label="Notification" /> */}
-            <NavItem to="/create" label="Create" />
-            <NavItem to={`/${userData?.username}`} label="Profile" />  
+            <NavItem to="/home" label={<FontAwesomeIcon icon={faHome}/>} />
+            <NavItem to="/search" label={<FontAwesomeIcon icon={faSearch}/>} />
+            <NavItem to="/create" label={<FontAwesomeIcon icon={faPlus}/>} />
+            <NavItem to={`/${userData?.username}`} label={<FontAwesomeIcon icon={faPerson}/>} />  
         </nav>
-        <p className="logout" onClick={Signout}>Log Out</p>
     </div>
   )
 }
 
-export default Navbar
+export default MobileNavbar

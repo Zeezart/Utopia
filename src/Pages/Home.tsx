@@ -6,6 +6,7 @@ import ExtraTab from '../Component/ExtraTab'
 import ProfilePosts from '../Component/ProfilePosts'
 import useGetFeedPosts from '../Hooks/useGetFeedPosts'
 import FeedPosts from '../Component/Feedposts'
+import MobileNavbar from '../Component/MobileNavbar'
 
 function HomePage(){
 
@@ -15,6 +16,9 @@ function HomePage(){
   return (
     <div id="home-page">
         <Navbar />
+        <div className="heading">
+          <h1 className='logo'>Utopia</h1>
+        </div>
 
         <div className='feed'>
           <div className="post">
@@ -26,6 +30,7 @@ function HomePage(){
         </div>
 
         <ExtraTab />
+        <MobileNavbar />
     </div>
   )
 }

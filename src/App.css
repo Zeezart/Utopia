@@ -19,6 +19,7 @@ body{
   padding: 0;
   margin: 0;
   background-color: var(--light-bg-color);
+  position: relative;
 }
 
 /* COMPONENT STYLINGS */
@@ -33,6 +34,9 @@ body{
   font-style: normal;
 }
 
+.mobile-navbar{
+  display: none
+}
 .navbar{
   width: 15%;
   padding: 1rem 0;
@@ -88,12 +92,17 @@ body{
 
 /* EXTRA TAB STYLING */
 .extra{
-  border-left: 1px solid var(--secondary-btn-bg);
+  border-left: 1px solid #f1f1f1;
   padding: 2rem;
   width: 30%;
+  height: 100vh;
+  position: sticky;
+  background-color: var(--light-bg-color);
   .search-tab{
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    gap: 0.3rem;
     input{
       padding: 1rem;
       border: none;
@@ -103,9 +112,18 @@ body{
       width: 100%;
       box-sizing: border-box;
     }
+    button{
+      padding: 1rem;
+      font: inherit;
+      outline: none;
+      border: none;
+      background-color: none;
+      background: none;
+      color: var(--primary-blue)
+    }
   }
 
-  .suggested-users{
+  .search-result{
     margin-top: 2rem;
     h2{
       font-size:1rem;
@@ -250,7 +268,6 @@ body{
 /* HOME PAGE STYLING */
 #home-page{
   display: flex;
-  
   .feed{
     padding: 2rem 6rem;
     width: 50%;
@@ -373,6 +390,9 @@ body{
             border-radius: 5px;
             font: inherit;
             font-size: 0.8rem;
+          }
+          .logout{
+            display: none;
           }
         }
       }
@@ -673,6 +693,146 @@ body{
         border-radius: 5px;
         border: none;
       }
+    }
+  }
+}
+
+/* SEARCH PAGE STYLING */
+#search{
+  .extra{
+    display:none
+  }
+}
+
+
+
+
+
+/* MOBILE SCREEN STYLING */
+.mobile-navbar{
+  width: 100%;
+  padding: 1rem;
+  position: fixed;
+  border-top: 1px solid #f1f1f1;
+  background-color: var(--light-bg-color);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+}
+@media (max-width: 900px){
+  .navbar{
+    display: none;
+  }
+
+  .extra{
+    display: none
+  }
+  .mobile-navbar{
+    display: block;
+    z-index: 1000;
+    nav{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      .active{
+        background: none;
+        color: var(--primary-purple);
+        padding: 0;
+        text-decoration: none;
+        font-size: 1.2rem;
+      }
+      
+      .nav-item{
+        color: var(--light-text-scd);
+        text-decoration: none;
+      }
+    }
+  }
+
+  #home-page{
+    display: block;
+    width: 100%;
+    .heading{
+      background-color: var(--light-bg-color);
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      .logo{
+        display: block;
+        margin: 0;
+        padding: 1rem 0;
+        padding-left: 2rem;
+        width: 100%;
+        background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
+        width: fit-content;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-family: "Pacifico", cursive;
+        font-weight: 400;
+        font-style: normal;
+      }
+    }
+    .feed{
+      margin-left: 0;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 1rem 2rem;
+      margin-top: 15%;
+    }
+  }
+
+  #profile-page{
+    display: block;
+    width: 100%;
+    .profile{
+      margin-left: 0;
+      padding: 1rem 2rem;
+      width: 100%;
+      box-sizing: border-box;
+      .profile-details{
+        display: block;
+        .profile-info{
+          .edit-button{
+            .logout{
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+  #create-page{
+    display: flex;
+    height: 70vh;
+    .create{
+      padding: 1rem 2rem;
+      margin-left: 0;
+      width: 100%;
+      box-sizing: border-box;
+      .create-content{
+        textarea{
+          height: max-content;
+        }
+        button{
+          margin-top: auto;
+        }
+      }
+    }
+  }
+
+  #search{
+    .extra{
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 1rem 2rem;
     }
   }
 }
