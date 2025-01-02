@@ -1,4 +1,4 @@
-import { profilePicture } from "../assets/index";
+
 import { useAuth } from "../ContextApi/UserAuthContext";
 import { useGetUser } from "../ContextApi/GetUserProfileContext";
 import useFollowUser from '../Hooks/useFollowUser'
@@ -17,7 +17,8 @@ const ProfileHeader = ({ displayEditModal }: TProfileHeader) => {
   const othersProfilePageAuth =
     currentUser && userData?.username !== userProfile?.username;
 
-    const { isFollowing, isUpdating, handleFollowerUser} = useFollowUser(userProfile?.uid)
+    const { isFollowing, handleFollowerUser} = useFollowUser(userProfile?.uid)
+    //const {  isUpdating} = useFollowUser(userProfile?.uid)
 
 
   if (!userProfile) {

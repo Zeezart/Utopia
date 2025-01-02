@@ -1,10 +1,6 @@
 import { FC } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom"
 import { useAuth } from "../ContextApi/UserAuthContext";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faHome } from '@fortawesome/free-solid-svg-icons';
-//import { useAuthState } from 'react-firebase-hooks/auth';
- 
 
 
 type TNavbarProps ={

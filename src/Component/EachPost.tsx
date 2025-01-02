@@ -1,4 +1,4 @@
-import { useState, useRef } from "react"
+import { useState } from "react"
 import { arrayRemove, deleteDoc, doc, updateDoc } from "firebase/firestore"
 import { useAuth } from "../ContextApi/UserAuthContext"
 import { db } from "../Auth/Firebase"
@@ -18,12 +18,12 @@ function EachPost({post}:any) {
     const {userProfile} = useGetUser()
 
     //HANDLE LIKE POST FUNCTIONALITY
-    const {handleLikePost,likes,isLiked,isLiking} = useLikePost(post)
+    //const {isLiking} = useLikePost(post)
+    const {handleLikePost,likes,isLiked} = useLikePost(post)
 
 
     //MORE OPTIONS DROPDOWN FUNCTIONALITY
-    const [position, setPosition] = useState({ top: 0, left: 0 });
-    const buttonRef = useRef<HTMLButtonElement>(null);
+    
 
     const [displayMoreDropdown, setDisplayMoreDropdown] = useState(false)
     function handleMoreDropdown(){

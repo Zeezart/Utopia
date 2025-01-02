@@ -4,10 +4,7 @@ import Navbar from "../Component/Navbar";
 import EditProfile from "../Modals/EditProfile";
 import ProfileHeader from "../Component/ProfileHeader";
 import useGetUserProfile from "../Hooks/useGetUserProfile";
-import { profilePicture } from '../assets/index'
 import ExtraTab from "../Component/ExtraTab";
-import EachPost from "../Component/EachPost";
-import { useGetPost } from "../ContextApi/PostContext";
 import ProfilePosts from "../Component/ProfilePosts";
 import MobileNavbar from "../Component/MobileNavbar";
 

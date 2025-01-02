@@ -1,7 +1,7 @@
 import {authImage} from "../assets/index"
 import React, {useState} from "react"
 import { db } from "./Firebase"
-import { setDoc,doc,collection,query,where, getDoc, getDocs } from "firebase/firestore"
+import { setDoc,doc,collection,query,where, getDocs } from "firebase/firestore"
 import { Link } from "react-router-dom"
 import { useAuth } from "../ContextApi/UserAuthContext"
 import { useNavigate } from "react-router-dom"

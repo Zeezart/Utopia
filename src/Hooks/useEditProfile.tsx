@@ -7,7 +7,7 @@ import { useGetUser } from "../ContextApi/GetUserProfileContext"
 function useEditProfile() {
     const {currentUser, userData, setUserData} = useAuth()
   const [isUpdating, setIsUpdating] = useState(false)
-  const {setUserProfile, userProfile} = useGetUser()
+  const {setUserProfile} = useGetUser()
 
   const editProfile = async(profileDetails:any) => {
     if(isUpdating || !currentUser){

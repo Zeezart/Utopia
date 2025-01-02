@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { NavLink, useLocation, useNavigate } from "react-router-dom"
+import { NavLink, useLocation } from "react-router-dom"
 import { useAuth } from "../ContextApi/UserAuthContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faHeart, faHome, faPerson, faPlus, faSearch, faSignOut } from '@fortawesome/free-solid-svg-icons';
+import {   faHome, faPerson, faPlus, faSearch } from '@fortawesome/free-solid-svg-icons';
 //import { useAuthState } from 'react-firebase-hooks/auth';
  
 
@@ -27,16 +27,8 @@ const NavItem: FC<TNavbarProps>=({label,to}) => {
   );
 }
 function MobileNavbar() {
-    const navigate = useNavigate()
-    const {SignOut, userData} = useAuth()
-    //const { pathname } = useLocation()
-    //const [user, loading, error] = useAuthState(auth, options);
-    
-
-    function Signout(){
-      SignOut()
-      navigate("/signin")
-    }
+    const { userData} = useAuth()
+   
   return (
     <div className="mobile-navbar">
         <nav>

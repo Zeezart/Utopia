@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react"
 import { useGetPost } from "../ContextApi/PostContext"
 import { useAuth } from "../ContextApi/UserAuthContext"
-import { useGetUser } from "../ContextApi/GetUserProfileContext"
 import { collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "../Auth/Firebase"
 
@@ -10,7 +9,6 @@ function useGetFeedPosts() {
     const [isFetching, setIsFetching] = useState(false)
     const {posts, setPosts} = useGetPost()
     const {currentUser, userData} = useAuth()
-    const {setUserProfile} = useGetUser()
 
     useEffect(() => {
         const getFeedPosts = async () => {

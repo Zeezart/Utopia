@@ -7,7 +7,8 @@ import { timeAgo } from '../Utils/Timestamp';
 
 
 function Comments({postDetails, setDisplayComments}:any) {
-    const {isCommenting, handlePostComment} = useCreateComment()
+    //import isCommenting directly below to work on loading state
+    const { handlePostComment} = useCreateComment()
     const [inputedComment, setInputedComment] = useState("")
     const {currentUser} = useAuth()
 

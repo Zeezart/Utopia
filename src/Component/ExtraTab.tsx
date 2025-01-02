@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
+import  { useRef } from "react";
 import useSearchUser from "../Hooks/useSearchUser";
 import useFollowUser from "../Hooks/useFollowUser";
 
 function ExtraTab() {
-  const { user, isSearching, searchUserProfile } = useSearchUser();
+  //import isSearching below whenyou want to work on the loading state
+  const { user, searchUserProfile } = useSearchUser();
   const searchRef = useRef<any>(null);
   
   const handleSearchUser = async () => {
@@ -11,7 +12,8 @@ function ExtraTab() {
     await searchUserProfile(searchInput); 
   };
 
-  const { isFollowing, isUpdating, handleFollowerUser} = useFollowUser(user?.uid)
+  //import isUpdating directly below when you want to work on its loading state
+  const { isFollowing,  handleFollowerUser} = useFollowUser(user?.uid)
 
 
 

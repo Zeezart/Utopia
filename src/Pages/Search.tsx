@@ -1,4 +1,3 @@
-import React from 'react'
 import Navbar from '../Component/Navbar'
 import MobileNavbar from '../Component/MobileNavbar'
 import ExtraTab from '../Component/ExtraTab'

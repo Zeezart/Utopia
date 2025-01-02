@@ -47,6 +47,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [user, loading] = useAuthState(auth);
   const [userData, setUserData] = useState<any>(null);
 
+  console.log(currentUser?.uid)
+
   // SignUp function
   const SignUp = async (email: string, password: string) => {
     return await createUserWithEmailAndPassword(auth, email, password);

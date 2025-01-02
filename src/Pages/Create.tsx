@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Navbar from '../Component/Navbar'
 import ExtraTab from '../Component/ExtraTab'
 import {useGetUser} from "../ContextApi/GetUserProfileContext"
 import {useAuth } from "../ContextApi/UserAuthContext"
 import {useGetPost} from "../ContextApi/PostContext"
-import { useLocation } from 'react-router-dom'
 import { addDoc, arrayUnion, collection, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../Auth/Firebase'
 import MobileNavbar from '../Component/MobileNavbar'
@@ -22,7 +21,8 @@ function Create() {
 		}
   }
   
-  const {isLoading,handleCreatePost} = useCreatePost()
+  //const {isLoading} = useCreatePost()
+  const {handleCreatePost} = useCreatePost()
 
   return (
     <div  id="create-page">
@@ -54,11 +54,11 @@ export default Create
 
 
 function useCreatePost(){
-  const [isLoading, setIsLoading] = useState(false)
-  const {currentUser, userData} = useAuth()
+  const [isLoading] = useState(false)
+  const {userData} = useAuth()
   const {createPost} = useGetPost()
   const {addPost} = useGetUser()
-  const {pathname} = useLocation()
+  
 
 
 
