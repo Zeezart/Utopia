@@ -90,6 +90,35 @@ body{
   }
 }
 
+/* EMPTY PAGE STYLING */
+#empty-page{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  margin: auto auto;
+  .empty-page{
+    width: 100%;
+    text-align: center;
+    .icon{
+      font-size: 2rem;
+      color: var(--light-text-scd);
+      margin: 0;
+      padding: 0;
+    }
+    h2{
+      color: var(--light-text-scd);
+      font-size: 2rem;
+      margin: 0;
+    }
+    p{
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--light-text-scd);
+    }
+  }
+}
+
 /* EXTRA TAB STYLING */
 .extra{
   border-left: 1px solid #f1f1f1;
@@ -268,6 +297,9 @@ body{
 /* HOME PAGE STYLING */
 #home-page{
   display: flex;
+  .heading{
+    display: none;
+  }
   .feed{
     padding: 2rem 6rem;
     width: 50%;
@@ -758,6 +790,9 @@ body{
       }
       .form-container{
         padding: 1rem 2rem;
+        div{
+          width: 100%;
+        }
       }
     }
   }

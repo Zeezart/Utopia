@@ -75,7 +75,7 @@ function EachPost({post}:any) {
                 <p>{timeAgo(post?.createdAt)}</p>
             </div>
 
-           {userData.uid === userProfile.uid && <FontAwesomeIcon  icon={faEllipsisH} onClick={handleMoreDropdown}/>}
+           {userData?.uid === userProfile?.uid && <FontAwesomeIcon  icon={faEllipsisH} onClick={handleMoreDropdown}/>}
 
             {displayMoreDropdown && !isDeleting &&
                 <div className="more-dropdown-menu">

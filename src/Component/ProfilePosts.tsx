@@ -1,12 +1,15 @@
 import useGetUserPost from "../Hooks/useGetUserPost"
 import EachPost from "../Component/EachPost";
+import EmptyPage from "./EmptyPage";
+import { faWarning } from '@fortawesome/free-solid-svg-icons'
 
 
 function ProfilePosts() {
     const {isLoading, posts} = useGetUserPost() 
 
     const noPostFound:boolean = !isLoading && posts.length === 0
-    if(noPostFound) return(<p>No post yet</p>)
+    if(noPostFound) return(<EmptyPage icon={faWarning} mainMessage={"No Post Yet"} detail={"Write your first post"}/>
+    )
 
     return (
         <div className="posts">

@@ -7,6 +7,8 @@ import useGetUserProfile from "../Hooks/useGetUserProfile";
 import ExtraTab from "../Component/ExtraTab";
 import ProfilePosts from "../Component/ProfilePosts";
 import MobileNavbar from "../Component/MobileNavbar";
+import LoadingPage from "../Component/LoadingPage";
+import UserNotFoundPage from "./UserNotFound";
 
 const Profile = () => {
   const { username } = useParams<{ username: string }>();
@@ -18,8 +20,8 @@ const Profile = () => {
     setEditModal(true);
   };
 
-  if (isLoading) return <p>Loading...</p>;
-  if (!userProfile) return <p>User not found.</p>;
+  if (isLoading) return <LoadingPage />;
+  if (!userProfile) return <UserNotFoundPage />;
 
   return (
     <div id="profile-page">

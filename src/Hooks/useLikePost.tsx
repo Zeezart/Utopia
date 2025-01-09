@@ -7,7 +7,7 @@ function useLikePost(post:any) {
   const [isLiking, setIsLiking] = useState(false)
   const {currentUser} = useAuth()
   const [likes,setLikes] = useState(post?.likes?.length)
-  const [isLiked, setIsLiked] = useState(post.likes.includes(currentUser?.uid))
+  const [isLiked, setIsLiked] = useState(post?.likes?.includes(currentUser?.uid))
 
 
   const handleLikePost = async() => {
