@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuth } from "../ContextApi/UserAuthContext";
+// import { useAuth } from "../ContextApi/UserAuthContext";
 
 const UserNotFoundPage: React.FC = () => {
   const styles = {
@@ -42,7 +42,7 @@ const UserNotFoundPage: React.FC = () => {
     },
   };
 
-  const {userData} = useAuth();
+//   const {userData} = useAuth();
 
   return (
     <div style={styles.container}>
