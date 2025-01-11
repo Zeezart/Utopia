@@ -7,6 +7,7 @@ import {useGetPost} from "../ContextApi/PostContext"
 import { addDoc, arrayUnion, collection, doc, updateDoc } from 'firebase/firestore'
 import { db } from '../Auth/Firebase'
 import MobileNavbar from '../Component/MobileNavbar'
+import { useNavigate } from 'react-router-dom'
 
 function Create() {
 
@@ -58,6 +59,7 @@ function useCreatePost(){
   const {userData} = useAuth()
   const {createPost} = useGetPost()
   const {addPost} = useGetUser()
+  const navigate = useNavigate()
   
 
 
@@ -69,7 +71,7 @@ function useCreatePost(){
       comments: [],
       createdAt: Date.now(),
       createdBy: userData.uid,
-      user: userData.username
+      user: userData.username,
     }
 
     try{
@@ -82,6 +84,8 @@ function useCreatePost(){
 
       addPost({...newPost,id:postDocRef.id})
       alert("post created successfully")
+      
+      navigate("/home")
     }catch(error: any){
       console.log(error)
       alert(error.message)

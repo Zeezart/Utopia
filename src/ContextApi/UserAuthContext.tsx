@@ -11,6 +11,7 @@ import { auth, googleProvider } from "../Auth/Firebase";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../Auth/Firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
+import LoadingPage from "../Component/LoadingPage";
 
 type TAuthContext = {
   currentUser: User | null;
@@ -108,7 +109,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
         setUserData
       }}
     >
-      {loading ? <p>Loading...</p> : children}
+      {loading ? <LoadingPage /> : children}
     </AuthContext.Provider>
   );
 };

@@ -140,7 +140,7 @@ function SignUp() {
                             </div>
 
                             <button type="submit">Create Account</button>
-                            <p className="p-navigate">Aready have an account? <Link to="/signin">Sign In</Link></p>
+                            <p className="p-navigate">Aready have an account? <Link to="/">Sign In</Link></p>
                         </form>
                     </div>
                 </div>

@@ -13,13 +13,13 @@ function useGetFeedPosts() {
     useEffect(() => {
         const getFeedPosts = async () => {
             setIsFetching(true)
-            if(userData?.following.length === 0){
+            if(userData?.following.length === 0 && userData?.posts.length === 0){
                 setIsFetching(false)
-                setPosts([0])
+                setPosts([])
                 return
             }
-
-            const q = query(collection(db,"posts"), where("createdBy", "in", userData?.following))
+            const filterList = [currentUser?.uid, ...userData?.following]
+            const q = query(collection(db,"posts"), where("createdBy", "in", filterList))
             try{
                 const querySnapshot =await getDocs(q)
                 const feedPosts:any[] = []

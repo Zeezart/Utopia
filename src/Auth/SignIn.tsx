@@ -114,7 +114,7 @@ function SignIn() {
                                 onChange={handleInputChange}
                             />
                             <button type="submit">Sign In</button>
-                            <p className="p-navigate">Don't have an account? <Link to="/">Register</Link></p>
+                            <p className="p-navigate">Don't have an account? <Link to="/signup">Register</Link></p>
                         </form>
 
                         <button className="google" onClick={handleGoogleSignIn}>Sign in with Google</button>

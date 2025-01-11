@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH} from '@fortawesome/free-solid-svg-icons';
 import { faHeart as faRegularHeart, faComment, faBookmark } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faSolidHeart } from "@fortawesome/free-solid-svg-icons"
-import { useGetUser } from "../ContextApi/GetUserProfileContext";
+//import { useGetUser } from "../ContextApi/GetUserProfileContext";
 import Comments from "../Modals/Comments";
 import { timeAgo } from "../Utils/Timestamp"
 import useLikePost from "../Hooks/useLikePost"
@@ -15,7 +15,7 @@ import useLikePost from "../Hooks/useLikePost"
 function EachPost({post}:any) {
     
     const {userData} = useAuth()
-    const {userProfile} = useGetUser()
+    //const {userProfile} = useGetUser()
 
     //HANDLE LIKE POST FUNCTIONALITY
     //const {isLiking} = useLikePost(post)
@@ -75,7 +75,7 @@ function EachPost({post}:any) {
                 <p>{timeAgo(post?.createdAt)}</p>
             </div>
 
-           {userData?.uid === userProfile?.uid && <FontAwesomeIcon  icon={faEllipsisH} onClick={handleMoreDropdown}/>}
+           {userData?.username === post.user && <FontAwesomeIcon  icon={faEllipsisH} onClick={handleMoreDropdown}/>}
 
             {displayMoreDropdown && !isDeleting &&
                 <div className="more-dropdown-menu">

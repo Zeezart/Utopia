@@ -38,6 +38,7 @@ export const PostContextProvider: React.FC<{
 
   function createPost(newPost:any){
     setPosts((prevPosts) => [...prevPosts, newPost])
+    
   }
 
   function deletePost(postId:any){
