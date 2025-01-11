@@ -11,7 +11,6 @@ type TUserDetails = {
     username: string;
     password: string;
     confirmPassword: string;
-    agree: boolean
 }
 
 function SignUp() {
@@ -19,8 +18,7 @@ function SignUp() {
         email:"",
         username: "",
         password: "",
-        confirmPassword:"",
-        agree:false
+        confirmPassword:""
     })
 
     const [error, setError] = useState<string>("")
@@ -28,13 +26,14 @@ function SignUp() {
     const [showUsernameError, setShowUsernameError] = useState(false)
 
     function handleInputChange(e:React.ChangeEvent<HTMLInputElement>){
-        const {name, value, checked, type} = e.target
+        const {name, value} = e.target
         setUserDetails(prevInput => ({
             ...prevInput,
-            [name] : type === "checkbox" ? checked : value
+            [name] : value
         }))
     }
 
+  
     const navigate = useNavigate()
     async function handleSubmit(e:React.FormEvent){
         e.preventDefault();
@@ -128,7 +127,7 @@ function SignUp() {
                                 onChange={handleInputChange}
                             />
 
-                            <div className="agreement">
+                            {/* <div className="agreement">
                                 <input 
                                     type="checkbox" 
                                     id="agreement" 
@@ -137,7 +136,7 @@ function SignUp() {
                                     onChange={handleInputChange}
                                 />
                                 <label >I agree to our terms and condition</label>
-                            </div>
+                            </div> */}
 
                             <button type="submit">Create Account</button>
                             <p className="p-navigate">Aready have an account? <Link to="/">Sign In</Link></p>

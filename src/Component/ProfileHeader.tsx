@@ -3,6 +3,7 @@ import { useAuth } from "../ContextApi/UserAuthContext";
 import { useGetUser } from "../ContextApi/GetUserProfileContext";
 import useFollowUser from '../Hooks/useFollowUser'
 import { useNavigate } from "react-router-dom"
+import UserNotFoundPage from "../Pages/UserNotFound";
 
 type TProfileHeader = {
   displayEditModal: () => void;
@@ -22,7 +23,7 @@ const ProfileHeader = ({ displayEditModal }: TProfileHeader) => {
 
 
   if (!userProfile) {
-    return <p>User profile not found.</p>; 
+    return <UserNotFoundPage />; 
   }
 
   const navigate = useNavigate()

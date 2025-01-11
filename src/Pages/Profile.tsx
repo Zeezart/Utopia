@@ -32,7 +32,7 @@ const Profile = () => {
         <div className="posts-section">
           <div className="post-identifier">
             <p>Posts</p>
-            <p>Saved</p>
+            {/* <p>Saved</p> */}
           </div>
           <div className="posts">
              <ProfilePosts />

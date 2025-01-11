@@ -5,7 +5,7 @@ import { db } from "../Auth/Firebase"
 import { useGetPost } from "../ContextApi/PostContext"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisH} from '@fortawesome/free-solid-svg-icons';
-import { faHeart as faRegularHeart, faComment, faBookmark } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as faRegularHeart, faComment } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as faSolidHeart } from "@fortawesome/free-solid-svg-icons"
 //import { useGetUser } from "../ContextApi/GetUserProfileContext";
 import Comments from "../Modals/Comments";
@@ -100,9 +100,9 @@ function EachPost({post}:any) {
                 <p>{post?.comments?.length}</p>
             </div>
 
-            <div  className="each-post-interaction-icon">
+            {/* <div  className="each-post-interaction-icon">
                 <FontAwesomeIcon icon={faBookmark} />   
-            </div>
+            </div> */}
             
         </div>
 
