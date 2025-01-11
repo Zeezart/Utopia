@@ -23,7 +23,7 @@ function HomePage(){
         <div className='feed'>
           <div className="post">
             {isFetching ? <LoadingPage /> : 
-              !isFetching && posts.length > 0  ? posts.map((post) => 
+              posts.length > 0  ? posts.map((post) => 
                <FeedPosts post={post} key={post.id} />
               //<ProfilePosts post={post} key={post.id} />
             ):
